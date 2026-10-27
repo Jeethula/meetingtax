@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CURRENCIES } from '../data/currencies';
 import { formatCurrency } from '../lib/format';
-import { ArrowDown, Clock, ShieldAlert } from 'lucide-react';
+import { ArrowDown, Clock } from 'lucide-react';
 
 interface HeroProps {
   selectedCurrency: string;
