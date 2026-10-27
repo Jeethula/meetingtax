@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #F5EFEB;
+  --color-paper-light: #FAF7F2;
+  --color-paper-dark: #E4DDD3;
+  --color-paper-muted: #D7CFC4;
+  --color-paper-text: #191816;
+  
+  --color-ink-950: #090A0C;
+  --color-ink-900: #121316;
+  --color-ink-850: #17181D;
+  --color-ink-800: #21232A;
+  --color-ink-700: #333642;
+  --color-ink-600: #4B4F5E;
+  --color-ink-400: #888E9E;
+  --color-ink-300: #B8BCC8;
+  --color-ink-100: #EAECEF;
+
+  --color-waste: #FF3B1E;
+  --color-waste-hover: #E62E12;
+  --color-waste-dark: #A31E0C;
+  --color-waste-glow: rgba(255, 59, 30, 0.25);
+
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-headline: 'Syne', 'Space Grotesk', sans-serif;
+  --font-editorial: 'Instrument Serif', Georgia, serif;
+}
+
+/* Custom base resets */
+html {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+}
+
+body {
+  background-color: #090A0C;
+  color: #EAECEF;
+  font-family: var(--font-display);
+  overflow-x: hidden;
+}
+
+/* Tabular figures for monospace and counters */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Perforation edge pattern */
+.perforated-edge-top {
+  position: relative;
+}
+.perforated-edge-top::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-size: 16px 8px;
+  background-repeat: repeat-x;
+  background-image: radial-gradient(circle at 8px 0, transparent 6px, #F5EFEB 6.5px);
+}
+
+.perforated-edge-bottom {
+  position: relative;
+}
+.perforated-edge-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-size: 16px 8px;
+  background-repeat: repeat-x;
+  background-image: radial-gradient(circle at 8px 8px, transparent 6px, #F5EFEB 6.5px);
+}
+
+/* Rubber stamp styling */
+.stamp-box {
+  border: 3px solid #D92D20;
+  color: #D92D20;
+  display: inline-block;
+  padding: 4px 12px;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  transform: rotate(-6deg);
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 75%, rgba(0,0,0,0.6) 100%);
+  user-select: none;
+}
+
+/* Noise texture overlay */
+.receipt-paper-texture {
+  background-color: #F5EFEB;
+  background-image: radial-gradient(#000000 0.45px, transparent 0.45px);
+  background-size: 6px 6px;
+  background-position: 0 0;
+}
+
+/* Fine hairline rules */
+.hairline-border {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.hairline-border-b {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-border-t {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
