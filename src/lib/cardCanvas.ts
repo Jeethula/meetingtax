@@ -114,24 +114,26 @@ export function drawReceiptFront(
     ctx.fillStyle = '#111215';
     ctx.font = `600 ${Math.round(w * 0.028)}px 'JetBrains Mono', monospace`;
 
-    // Dynamic bullet points featuring Claude course, fitness, code shipping, reading
-    const bulletList = [
-      "• Completed Anthropic's Claude Prompting Course",
-      "• Hit 150+ intense gym sessions & fitness PRs",
-      "• Shipped full-stack engineering side projects",
-      "• Read foundational system architecture books",
-    ];
+    // Dynamic bullet points from employeeData.topOpportunities (calculated from 200 items in JSON)
+    const bulletList = (employeeData?.topOpportunities && employeeData.topOpportunities.length > 0)
+      ? employeeData.topOpportunities.slice(0, 4).map((opp) => `• ${opp.text}`)
+      : [
+          "• Completed Anthropic's Claude Prompting Course",
+          "• Hit intense gym sessions & fitness PRs",
+          "• Shipped full-stack engineering side projects",
+          "• Read foundational system architecture books",
+        ];
 
     bulletList.forEach((bullet) => {
-      wrapText(ctx, bullet, pad + 6, y, contentW - 12, w * 0.038);
-      y += w * 0.072;
+      wrapText(ctx, bullet, pad + 6, y, contentW - 12, w * 0.036);
+      y += w * 0.070;
     });
 
-    y += w * 0.015;
+    y += w * 0.012;
     ctx.fillStyle = '#555866';
-    ctx.font = `italic 600 ${Math.round(w * 0.031)}px 'Instrument Serif', Georgia, serif`;
-    wrapText(ctx, '"Instead, I sat muted as an audience member."', pad + 6, y, contentW - 12, w * 0.04);
-    y += w * 0.065;
+    ctx.font = `italic 600 ${Math.round(w * 0.030)}px 'Instrument Serif', Georgia, serif`;
+    wrapText(ctx, '"Instead, I sat muted as an audience member."', pad + 6, y, contentW - 12, w * 0.038);
+    y += w * 0.060;
 
     // Attribution
     ctx.textAlign = 'right';
@@ -202,8 +204,8 @@ export function drawReceiptFront(
     ctx.textAlign = 'left';
   }
 
-  // Stamp: tilted rubber stamp
-  drawRubberStamp(ctx, w * 0.65, h * 0.58, verdict.stampText, w);
+  // Stamp: tilted rubber stamp (placed cleanly in open space above footer, below attribution)
+  drawRubberStamp(ctx, w * 0.65, h * 0.75, verdict.stampText, w);
 
   // Bottom prompt & Barcode
   const footerY = h * 0.88;
