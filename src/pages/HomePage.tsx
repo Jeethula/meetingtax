@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Hero } from '../components/Hero';
 import {
   ArrowRight,
@@ -13,17 +13,15 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({
   selectedCurrency,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="space-y-10 sm:space-y-16 pb-12">
       {/* Section A: Hero */}
       <Hero
         selectedCurrency={selectedCurrency}
-        onCtaClick={() => {
-          window.location.href = '/audit';
-        }}
-        onStatsClick={() => {
-          window.location.href = '/stats';
-        }}
+        onCtaClick={() => navigate('/audit')}
+        onStatsClick={() => navigate('/stats')}
       />
 
       {/* WHY I CREATED THIS: Founder Note Feature Card */}
